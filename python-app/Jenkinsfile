@@ -41,6 +41,7 @@ pipeline {
         stage('Update K8S manifest & push to the same Repo'){
             steps {
                 script{
+                    withCredentials([usernamePassword(credentialsId: 'dceea876-e1ae-486d-b992-0570a173ebc7', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')])
                         sh '''
                         cd python-app/
                         cat python-deploy.yaml
@@ -49,7 +50,7 @@ pipeline {
                         git add python-deploy.yaml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
                         git remote -v
-                        git push https://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@github.com/EkanshJain98/jenkins.git HEAD:main
+                        git push https://github.com/EkanshJain98/jenkins.git HEAD:main
                         '''                        
                 }
             }
