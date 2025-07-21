@@ -43,6 +43,8 @@ pipeline {
                 script{
                     withCredentials([usernamePassword(credentialsId: 'dceea876-e1ae-486d-b992-0570a173ebc7', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
+                        git config --global user.name "${GIT_USERNAME}"
+                        git config --global user.password "${GIT_PASSWORD}"
                         cd python-app/
                         cat python-deploy.yaml
                         sed -i "s|techyboy987/basic-python-app:[^[:space:]]*|techyboy987/basic-python-app:${BUILD_NUMBER}|g" python-deploy.yaml
