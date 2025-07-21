@@ -38,10 +38,11 @@ pipeline {
             }
         }
       
-        stage('Update K8S manifest & push to Repo'){
+        stage('Update K8S manifest & push to the same Repo'){
             steps {
                 script{
                         sh '''
+                        cd python-app/
                         cat python-deploy.yaml
                         sed -i "s|techyboy987/basic-python-app:[^[:space:]]*|techyboy987/basic-python-app:${BUILD_NUMBER}|g" python-deploy.yaml
                         cat python-deploy.yaml
