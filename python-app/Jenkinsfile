@@ -37,22 +37,28 @@ pipeline {
                 }
             }
         }
+
+        stage('Checkout'){
+           steps {
+                  git branch: 'main', 
+                  url: 'https://github.com/EkanshJain98/argocd'
+           }
+        }
       
-        stage('Update K8S manifest & push to the same Repo'){
+        stage('Update K8S manifest & push to the different Repo'){
             steps {
                 script{
                     withCredentials([usernamePassword(credentialsId: 'dceea876-e1ae-486d-b992-0570a173ebc7', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
                         git config --global user.name "${GIT_USERNAME}"
                         git config --global user.password "${GIT_PASSWORD}"
-                        cd python-app/
                         cat python-deploy.yaml
                         sed -i "s|techyboy987/basic-python-app:[^[:space:]]*|techyboy987/basic-python-app:${BUILD_NUMBER}|g" python-deploy.yaml
                         cat python-deploy.yaml
                         git add python-deploy.yaml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
                         git remote -v
-                        git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/EkanshJain98/jenkins.git
+                        git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/EkanshJain98/argocd.git
                         git push origin HEAD:main
                         '''                        
                 }
