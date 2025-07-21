@@ -38,7 +38,7 @@ pipeline {
             }
         }
 
-        stage('Checkout'){
+        stage('Checkout k8s repo'){
            steps {
                   git branch: 'main', 
                   url: 'https://github.com/EkanshJain98/argocd'
