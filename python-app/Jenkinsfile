@@ -40,7 +40,6 @@ pipeline {
         stage('Update K8S manifest & push to Repo'){
             steps {
                 script{
-                   {
                         sh '''
                         cat python-deploy.yaml
                         sed -i "s|techyboy987/basic-python-app:[^[:space:]]*|techyboy987/basic-python-app:${BUILD_NUMBER}|g" python-deploy.yaml
@@ -50,7 +49,6 @@ pipeline {
                         git remote -v
                         git push https://github.com/EkanshJain98/jenkins.git HEAD:main
                         '''                        
-                    }
                 }
             }
         }
