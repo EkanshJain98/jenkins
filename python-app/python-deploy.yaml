@@ -18,7 +18,7 @@ spec:
         app: python-deploy
     spec:
       containers:
-      - image: techyboy987/basic-python-app:17
+      - image: techyboy987/basic-python-app:18
         name: basic-python-app
         resources: {}
 status: {}
