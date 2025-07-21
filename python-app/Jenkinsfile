@@ -41,7 +41,7 @@ pipeline {
         stage('Update K8S manifest & push to the same Repo'){
             steps {
                 script{
-                    withCredentials([usernamePassword(credentialsId: 'dceea876-e1ae-486d-b992-0570a173ebc7', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')])
+                    withCredentials([usernamePassword(credentialsId: 'dceea876-e1ae-486d-b992-0570a173ebc7', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
                         cd python-app/
                         cat python-deploy.yaml
@@ -56,4 +56,5 @@ pipeline {
             }
         }
     }
+}
 }
