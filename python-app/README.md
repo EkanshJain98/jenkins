@@ -34,7 +34,8 @@ Now let me show you the complete process.
 <img width="851" height="365" alt="image" src="https://github.com/user-attachments/assets/d9297295-6d20-4ba4-8d94-41001ad1feb6" />
 
 3. Jenkins pipeline will trigger
-<img width="1883" height="396" alt="image" src="https://github.com/user-attachments/assets/8104cb2a-4316-4163-8494-efa44f15fa30" />
+
+<img width="1877" height="374" alt="image" src="https://github.com/user-attachments/assets/38e55214-68c8-4265-a4a7-18f08b0e89ee" />
 
 4. Let's see the ArgoCD dashboard if it has synced the changes and updated the same in Kubernetes.
 
